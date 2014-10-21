@@ -1,4 +1,6 @@
 class AccessController < ApplicationController
+  respond_to :html, :xml, :json
+
   def index
     # display text and links. Nothing to return
   end

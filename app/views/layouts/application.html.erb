@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Progressus - Free business bootstrap template by GetTemplate</title>
+  <title>JTSRecords</title>
 
   <link rel="shortcut icon" href="assets/images/gt_favicon.png">
 
@@ -33,7 +33,12 @@
             <li class="dropdown">
               <a href="#" class="dropdown-toggle" data-toggle="dropdown">Options <b class="caret"></b></a>
               <ul class="dropdown-menu">
-                <li><a href="sidebar-left.html">Left Sidebar</a></li>
+                <% if current_user.user_profile == nil %>
+                    <li><%= link_to('Your Profile', new_user_profile_path) %></li>
+                <% else %>
+                    <li><%= link_to('Dashboard', user_profile_path(current_user.user_profile)) %></li>
+                    <li><%= link_to('Edit Profile', edit_user_profile_path(current_user.user_profile)) %></li>
+                <% end %>
                 <li class="active"><a href="sidebar-right.html">Right Sidebar</a></li>
               </ul>
             </li>

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141009044053) do
+ActiveRecord::Schema.define(version: 20141016100131) do
 
   create_table "bands", force: true do |t|
     t.string   "name"
@@ -31,6 +31,20 @@ ActiveRecord::Schema.define(version: 20141009044053) do
     t.datetime "updated_at"
   end
 
+  create_table "user_profiles", force: true do |t|
+    t.string   "first_name"
+    t.string   "last_name"
+    t.string   "country"
+    t.string   "state"
+    t.string   "city"
+    t.string   "preferred_email"
+    t.string   "about_me"
+    t.date     "dob"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer  "user_id"
+  end
+
   create_table "users", force: true do |t|
     t.string   "email",                  default: "", null: false
     t.string   "encrypted_password",     default: "", null: false
@@ -44,7 +58,7 @@ ActiveRecord::Schema.define(version: 20141009044053) do
     t.string   "last_sign_in_ip"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.integer  "role_id"
+    t.integer  "user_type"
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
